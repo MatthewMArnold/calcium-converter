@@ -1,0 +1,33 @@
+name: Build calcium converter release
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    env:
+      PYTHON_VERSION: "=3.9.7"
+      WINLIBS_FILE_NAME_STEM: "winlibs-x86_64-posix-seh-gcc-11.2.0-llvm-13.0.0-mingw-w64ucrt-9.0.0-r2"
+      WINLIBS_DOWNLOAD_PATH: "https://github.com/brechtsanders/winlibs_mingw/releases/download/11.2.0-13.0.0-9.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-11.2.0-llvm-13.0.0-mingw-w64ucrt-9.0.0-r2.zip"
+      RELEASE_FILE_NAME_STEM: calcium_converter
+
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          architecture: x64
+
+      - uses: actions/checkout@v2
+
+      - name: Build clacium converter
+        run: pyinstaller --onefile -w calcium_converter.py
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: auto-build-${{ github.run_number }}
+          files: ${{ env.RELEASE_FILE_NAME_STEM }}.exe
