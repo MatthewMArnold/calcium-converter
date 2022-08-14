@@ -5,13 +5,17 @@ generated from `<insert name here>`.
 
 ## Setup
 
-To use the script, you must have python 3 installed. Also, `openpyxl` must be
-installed (`pip instal openpyxl`).
+If you do not use a release build, to use the script, you must have python 3
+installed. Also, `openpyxl` must be installed (`pip instal openpyxl`). If you
+use a release build (see "Usage"), you merely have to download the latest
+release.
 
 ## Usage
 
 To see help information about the script, run `python calcium_converter.py -h`.
-This generates the following:
+Alternatively, download the latest release executable for Windows here:
+https://github.com/MatthewMArnold/calcium-converter/releases and then run
+`calcium_converter.py`. This generates the following:
 
 ```
 $ python3 calcium_converter.py -h
