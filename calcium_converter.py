@@ -334,6 +334,9 @@ def ratio_to_calcium_concentration(ratio: float) -> float:
 
     @param ratio_data: ratio value to convert to concentration data.
     '''
+    if ratio is None:
+        return None
+    
     return 146 * (25813.79 / 1674.68) * ((ratio - 0.132) / (6.274 - ratio))
 
 
@@ -451,7 +454,7 @@ def get_raw_data(insheet: Worksheet, run_label: str) \
                         (type(time_value) is int or type(time_value) is float):
                         list.append(TimeValuePair(time_value, ratio_value))
                     else:
-                        print(f'Invalid time/ratio values: time {time_value} ratio {ratio_value} ')
+                        print(f'Invalid time/ratio values: time {time_value} ratio {ratio_value}, row {k + start}')
 
                         list.append(TimeValuePair(0, 0))
 
