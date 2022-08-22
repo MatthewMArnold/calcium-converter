@@ -1,7 +1,7 @@
 # Calcium File Conversion
 
 `calcium_converter.py` is a python script that converts a calcium imaging file
-generated from `<insert name here>`.
+generated from [NIS-Elements (Nikon)](https://www.microscope.healthcare.nikon.com/products/software/nis-elements).
 
 ## Setup
 
