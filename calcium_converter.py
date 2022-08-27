@@ -299,6 +299,8 @@ def calculate_area(treatment_data: TreatmentData, base: float, base_std: float, 
     @param treatment_data: List of data from current treatment for some
     particular region. @param base: Base to compute auc
     '''
+    DEFAULT_DT = 6
+
     auc = 0.0
 
     values_to_consider = treatment_data.treatment_data + treatment_data.anterior_wash_data
@@ -306,9 +308,12 @@ def calculate_area(treatment_data: TreatmentData, base: float, base_std: float, 
     consec_values_at_base = 0
     NUM_CONSECUTIVE_VALUES_BEFORE_DONE = 15
 
+    previous_time = None
     for value in values_to_consider:
+        dt = DEFAULT_DT if previous_time is None else value.time - previous_time 
+        previous_time = value.time
         if value.value > base + base_std:
-            auc += value.value - base
+            auc += (value.value - base) * dt
         elif value.time > base_peak_time:
             consec_values_at_base += 1
 
