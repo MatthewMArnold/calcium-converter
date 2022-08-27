@@ -1,12 +1,12 @@
 # Calcium File Conversion
 
 `calcium_converter.py` is a python script that converts a calcium imaging file
-generated from `<insert name here>`.
+generated from [NIS-Elements (Nikon)](https://www.microscope.healthcare.nikon.com/products/software/nis-elements).
 
 ## Setup
 
 If you do not use a release build, to use the script, you must have python 3
-installed. Also, `openpyxl` must be installed (`pip instal openpyxl`). If you
+installed. Also, `openpyxl` must be installed (`pip install openpyxl`). If you
 use a release build (see "Usage"), you merely have to download the latest
 release.
 
@@ -83,7 +83,7 @@ ordering.
 1. A standard bath treatment comes directly before and after the treatment. In
    this case, the base will be computed using the prior standard bath treatment
    and the area and peak will be computed using the treatment data as well as
-   the anterior standard bath treatment.
+   the posterior standard bath treatment.
 2. A non-standard bath treatment comes before the treatment. In this case, the
    closest standard bath treatment will be used to compute the base.
 3. A non-standard bath treatment comes after the treatment. In this case, the
