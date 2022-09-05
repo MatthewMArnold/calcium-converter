@@ -487,7 +487,7 @@ def get_raw_data(insheet: Worksheet, run_label: str) \
                     anterior_std_treatment_end = treatment_labels[j + 2].index if j + 2 < len(treatment_labels) else insheet.max_row + 1
 
                     # Find and add all anterior STD data
-                    append_values(treatment_data.anterior_wash_data, treatment_end_idx + 1, anterior_std_treatment_end)
+                    append_values(treatment_data.anterior_wash_data, treatment_end_idx, anterior_std_treatment_end)
 
                 ratio_data[region_label].append(treatment_data)
             else:
